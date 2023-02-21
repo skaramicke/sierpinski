@@ -62,15 +62,6 @@ const init = () => {
     // Clear the canvas
     clear(context, canvas);
 
-    // Draw the polygon
-    context.beginPath();
-    context.moveTo(polygonPoints[0][0], polygonPoints[0][1]);
-    for (let i = 1; i < polygonPoints.length; i++) {
-      context.lineTo(polygonPoints[i][0], polygonPoints[i][1]);
-    }
-    context.closePath();
-    context.stroke();
-
     // If there are three points, draw the triangle
     if (polygonPoints.length === 3) {
       // Pick a random point within the triangle
@@ -94,6 +85,15 @@ const init = () => {
         drawPoint[1] = (drawPoint[1] + vertex[1]) / 2;
       }
     } else {
+      // Draw the polygon
+      context.beginPath();
+      context.moveTo(polygonPoints[0][0], polygonPoints[0][1]);
+      for (let i = 1; i < polygonPoints.length; i++) {
+        context.lineTo(polygonPoints[i][0], polygonPoints[i][1]);
+      }
+      context.closePath();
+      context.stroke();
+
       // Draw a small circle for each point in the polygon
       for (let i = 0; i < polygonPoints.length; i++) {
         context.beginPath();
